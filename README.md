@@ -218,7 +218,7 @@ working-food-web/
 - git clone https://github.com/RannyG/WorkingFood
 - apague a pasta gitignore
 - Agora dentro da pasta API inserimos no terminal o comando (npm i)
-- incluia um arquivo no diretorio raiz do projeto chamado (.env)
+- Crie um arquivo no diretorio raiz do projeto chamado (.env) e adicione essas informações nesse arquivo
 
   
   DATABASE_URL=postgresql://postgres:postgres@localhost:5432/workingfooddb
@@ -226,8 +226,8 @@ JWT_SECRET=cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d
 PORT=3001
 VIA_CEP_API_URL=https://viacep.com.br/ws/{{CEP}}/json/
 
-
-- depois npm run start:dev
+- envie o comando no terminal "npx prisma db pull"
+- envie o comando no terminal "npm run start:dev"
 
 - #### Front-End
 - como foi dado o git clone anteriormente não há necessidade de executa-lo novamente
