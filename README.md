@@ -7,9 +7,6 @@
 4. [Estrutura do Projeto](#estrutura-do-projeto)
 5. [Módulos e Funcionalidades](#módulos-e-funcionalidades)
 6. [Banco de Dados](#banco-de-dados)
-7. [API Endpoints](#api-endpoints)
-8. [Configuração e Instalação](#configuração-e-instalação)
-9. [Fluxo de Uso](#fluxo-de-uso)
 
 ---
 
