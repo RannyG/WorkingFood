@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         BigInt      @id @default(autoincrement())
+  role       Role
+  password   String      @default("")
+  costumer   Costumer?
+  restaurant Restaurant?
+}
+
+model Costumer {
+  id        BigInt   @id @default(autoincrement())
+  name      String
+  cpf       String
+  birthDate DateTime @db.Date
+  cellphone String
+  userId    BigInt   @unique
+  cart      Cart[]
+  user      User     @relation(fields: [userId], references: [id])
+  order     Order[]
+}
+
+model Restaurant {
+  id          BigInt    @id @default(autoincrement())
+  companyName String
+  cnpj        String    @unique
+  userId      BigInt    @unique
+  products    Product[]
+  user        User      @relation(fields: [userId], references: [id])
+}
+
+model Product {
+  id              BigInt            @id @default(autoincrement())
+  name            String
+  description     String?
+  price           Decimal
+  stockCount      Int               @default(0)
+  isAvailable     Boolean
+  restaurantId    BigInt
+  cart            Cart[]
+  restaurant      Restaurant        @relation(fields: [restaurantId], references: [id])
+  productCategory ProductCategory[]
+  purchaseItem    PurchaseItem[]
+}
+
+model Category {
+  id              BigInt            @id @default(autoincrement())
+  name            String
+  productCategory ProductCategory[]
+}
+
+model ProductCategory {
+  idProduct  BigInt
+  idCategory BigInt
+  category   Category @relation(fields: [idCategory], references: [id])
+  product    Product  @relation(fields: [idProduct], references: [id])
+
+  @@id([idProduct, idCategory])
+}
+
+model Cart {
+  idCostumer BigInt
+  idProduct  BigInt
+  amount     Int
+  costumer   Costumer @relation(fields: [idCostumer], references: [id])
+  product    Product  @relation(fields: [idProduct], references: [id])
+
+  @@id([idCostumer, idProduct])
+}
+
+model PurchaseItem {
+  id           BigInt  @id @default(autoincrement())
+  amount       Int
+  unitaryPrice Decimal
+  idProduct    BigInt
+  idOrder      BigInt
+  order        Order   @relation(fields: [idOrder], references: [id])
+  product      Product @relation(fields: [idProduct], references: [id])
+}
+
+model Order {
+  id               BigInt         @id @default(autoincrement())
+  situation        OrderSituation
+  requestDate      DateTime
+  cepToDelivery    String
+  numberToDelivery String
+  idCostumer       BigInt
+  costumer         Costumer       @relation(fields: [idCostumer], references: [id])
+  purchase         PurchaseItem[]
+}
+
+enum Role {
+  COSTUMER
+  RESTAURANT
+}
+
+enum OrderSituation {
+  RECEIVED
+  INPROGRESS
+  SHIPPEDTODELIVERY
+  DELIVERED
+}

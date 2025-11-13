@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+body,
+html,
+#__nuxt {
+  height: 100dvh;
+}
+
+body {
+  background-color: #fffcf7;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.border-yellow {
+  @apply border-[#E8BA65];
+}
+
+.label {
+  @apply flex flex-col text-black text-base font-medium;
+}
+
+.input {
+  @apply border border-[#E8BA65] w-full rounded-sm py-1 px-3 font-normal;
+}
+
+.link {
+  @apply w-fit text-[#E8BA65] font-bold underline;
+}
+
+.button {
+  @apply bg-[#E8BA65] text-black text-base font-bold py-2 rounded-sm cursor-pointer;
+}
+
+.shadow-custom {
+  @apply shadow-[#E8BA65];
+}
+
+.error {
+  @apply text-red-500 text-sm;
+}

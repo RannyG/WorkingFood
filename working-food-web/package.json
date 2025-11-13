@@ -1,0 +1,28 @@
+{
+  "name": "working-food",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/icon": "^2.1.0",
+    "@nuxt/ui": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "jwt-decode": "^4.0.0",
+    "nuxt": "^4.2.1",
+    "nuxt-auth-utils": "^0.5.25",
+    "tailwindcss": "^4.1.17",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi-light": "^1.2.2",
+    "@types/node": "^24.10.0"
+  }
+}
